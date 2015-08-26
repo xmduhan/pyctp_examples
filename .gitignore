@@ -1,3 +1,4 @@
 *.pyc
 notebook/.ipynb_checkpoints/
 *.xls
+notebook/.ipython.out
