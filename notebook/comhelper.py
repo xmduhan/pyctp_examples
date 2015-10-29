@@ -82,7 +82,12 @@ def getInsertOrderField(instrumentId, direction, action, volume=1, limitPrice=0)
     inputOrderField.CombHedgeFlag = '1'      # 投机
     inputOrderField.LimitPrice = limitPrice  # 限价 0表不限制
     inputOrderField.VolumeTotalOriginal = volume  # 手数
-    inputOrderField.TimeCondition = '1'      # 立即完成否则撤消
+
+    if limitPrice == 0:
+        inputOrderField.TimeCondition = '1'      # 立即完成否则撤消
+    else:
+        inputOrderField.TimeCondition = '3'  # 当日有效
+
     inputOrderField.GTDDate = ''
     inputOrderField.VolumeCondition = '1'    # 成交类型  '1' 任何数量  '2' 最小数量 '3'全部数量
     inputOrderField.MinVolume = volume       # 最小数量
